@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск элемента в отсортированном списке</title>
+    
+    <link href="../style.css" rel="stylesheet">
+</head>
+<body>
+    <a class="back-link" href="../index.html">← Все задания</a>
+    <h1 id="textpechat" class="line-1 anim-textpechat">Поиск элемента в отсортированном списке</h1>
+
+    <div class="block-pages-1">
+    <input type="text" id="inputList" placeholder="Введите числа через запятую">
+    <input type="number" id="searchValue" placeholder="Введите число">
+    <button onclick="searchInList()" class="btn-result">Найти</button>
+    <p class="text-result-1"><strong>Результат:</strong> <span id="output"></span></p></div>
+
+    <img src="../svg/code7.svg" class="code_text_1" alt="Иллюстрация исходного решения">
+    <script>
+
+        function searchInList() {
+            let input = document.getElementById("inputList").value;
+            let searchValue = parseInt(document.getElementById("searchValue").value);
+            let list = input.split(',').map(item => parseInt(item.trim()));
+
+            function binarySearch(arr, target) {
+                let left = 0;
+                let right = arr.length - 1;
+
+                while (left <= right) {
+                    let mid = Math.floor((left + right) / 2);
+
+                    if (arr[mid] === target) {
+                        return mid;
+                    } else if (arr[mid] < target) {
+                        left = mid + 1;
+                    } else {
+                        right = mid - 1;
+                    }
+                }
+                return -1;
+            }
+
+            let result = binarySearch(list, searchValue);
+            document.getElementById("output").textContent = result;
+        }
+    </script>
+</body>
+</html>

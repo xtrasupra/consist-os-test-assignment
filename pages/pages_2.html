@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Переворачивание слов в строке</title>
+    
+    <link href="../style.css" rel="stylesheet">
+</head>
+<body>
+    <a class="back-link" href="../index.html">← Все задания</a>
+    <h1 id="textpechat" class="line-1 anim-textpechat">Переворачивание слов в строке</h1>
+
+    <div class="block-pages-1">
+
+        <input type="text" id="inputText" placeholder="Введите строку">
+        <button onclick="reverseWords()" class="btn-result">Перевернуть</button>
+        <p id="result" class="text-result-1"><strong>Результат:</strong> <span id="output"></span></p>
+        </div>
+
+    <img src="../svg/code2.svg" class="code_text_1" alt="Иллюстрация исходного решения">
+    <script>
+
+        function reverseWords() {
+            let input = document.getElementById("inputText").value;
+            let reversed = input.split(' ').map(word => word.split('').reverse().join('')).join(' ');
+            document.getElementById("output").textContent = reversed;
+        }
+    </script>
+
+</body>
+</html>

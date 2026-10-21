@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Неуникальные элементы</title>
+    
+    <link href="../style.css" rel="stylesheet">
+</head>
+<body>
+    <a class="back-link" href="../index.html">← Все задания</a>
+    <h1 id="textpechat" class="line-1 anim-textpechat">Неуникальные элементы</h1>
+    <div class="block-pages-1">
+    <input type="text" id="numbersInput" placeholder="Пример: 1, 2, 3, 4, 2, 1">
+    <button onclick="processNumbers()" class="btn-result">Найти неуникальные</button>
+    <div id="result" class="text-result-1"></div>
+    </div>
+    
+    <img src="../svg/code1.svg" class="code_text_1" alt="Иллюстрация исходного решения">
+    <script>
+
+        function getNonUniqueElements(arr) {
+            const counts = new Map();
+            
+            arr.forEach(num => counts.set(num, (counts.get(num) || 0) + 1));
+            
+            return arr.filter(num => counts.get(num) > 1);
+        }
+
+        function processNumbers() {
+            const input = document.getElementById("numbersInput").value;
+            
+            if (!input.trim()) {
+                document.getElementById("result").innerText = "Введите числа!";
+                return;
+            }
+
+            const numbers = input.split(",").map(num => parseInt(num.trim())).filter(num => !isNaN(num));
+            const result = getNonUniqueElements(numbers);
+            
+            document.getElementById("result").innerText = result.length 
+                ? "Неуникальные элементы: " + result.join(", ")
+                : "Нет неуникальных элементов!";
+        }
+
+    </script>
+
+</body>
+</html>

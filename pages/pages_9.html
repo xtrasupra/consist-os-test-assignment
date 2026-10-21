@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проверка правильности расставленных скобок</title>
+    
+    <link href="../style.css" rel="stylesheet">
+</head>
+<body>
+    <a class="back-link" href="../index.html">← Все задания</a>
+    <h1 id="textpechat" class="line-1 anim-textpechat">Проверка правильности расставленных скобок</h1>
+
+    <div class="block-pages-1">
+    <input type="text" id="brackets" placeholder="Введите строку со скобками">
+    <button onclick="checkBrackets()" class="btn-result">Проверить</button>
+    <p class="text-result-1"><strong>Результат:</strong> <span id="output"></span></p></div>
+
+    <img src="../svg/code9.svg" class="code_text_1" alt="Иллюстрация исходного решения">
+    <script>
+
+        function checkBrackets() {
+            var str = document.getElementById("brackets").value;
+            var stack = [];
+            var bracketsMap = {
+                '(': ')',
+                '[': ']',
+                '{': '}'
+            };
+
+            for (var i = 0; i < str.length; i++) {
+                var char = str[i];
+
+                if (bracketsMap[char]) {
+                    stack.push(char);
+                } else {
+                    var last = stack.pop();
+                    if (bracketsMap[last] !== char) {
+                        document.getElementById("output").textContent = "False";
+                        return;
+                    }
+                }
+            }
+
+            if (stack.length === 0) {
+                document.getElementById("output").textContent = "True";
+            } else {
+                document.getElementById("output").textContent = "False";
+            }
+        }
+    </script>
+</body>
+</html>

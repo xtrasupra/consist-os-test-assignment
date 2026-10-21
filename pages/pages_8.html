@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Решение квадратного уравнения</title>
+    
+    <link href="../style.css" rel="stylesheet">
+</head>
+<body>
+    <a class="back-link" href="../index.html">← Все задания</a>
+    <h1 id="textpechat" class="line-1 anim-textpechat">Решение квадратного уравнения</h1>
+    
+    <div class="block-pages-1">
+    <input type="number" id="a" placeholder="Введите a">
+    <input type="number" id="b" placeholder="Введите b">
+    <input type="number" id="c" placeholder="Введите c">
+    <button onclick="solveQuadratic()" class="btn-result">Решить</button>
+    <p class="text-result-1"><strong>Результат:</strong> <span id="output"></span></p></div>
+
+    <img src="../svg/code8.svg" class="code_text_1" alt="Иллюстрация исходного решения">
+    <script>
+
+        function solveQuadratic() {
+            var a = parseFloat(document.getElementById("a").value);
+            var b = parseFloat(document.getElementById("b").value);
+            var c = parseFloat(document.getElementById("c").value);
+
+            if (isNaN(a) || isNaN(b) || isNaN(c)) {
+                document.getElementById("output").textContent = "Введите корректные числа!";
+                return;
+            }
+
+            if (a === 0) {
+                document.getElementById("output").textContent = "Это не квадратное уравнение!";
+                return;
+            }
+
+            var D = b * b - 4 * a * c;
+
+            if (D < 0) {
+                document.getElementById("output").textContent = "Нет решений (D < 0)";
+            } else if (D === 0) {
+                var x = -b / (2 * a);
+                document.getElementById("output").textContent = "x = " + x;
+            } else {
+                var x1 = (-b + Math.sqrt(D)) / (2 * a);
+                var x2 = (-b - Math.sqrt(D)) / (2 * a);
+                document.getElementById("output").textContent = "x1 = " + x1 + ", x2 = " + x2;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Нахождение факториала</title>
+    
+    <link href="../style.css" rel="stylesheet">
+</head>
+<body>
+    <a class="back-link" href="../index.html">← Все задания</a>
+    <h1 id="textpechat" class="line-1 anim-textpechat">Нахождение факториала</h1>
+
+    <div class="block-pages-1">
+    <input type="number" id="num" placeholder="Введите число">
+    <button onclick="calculateFactorial()"  class="btn-result">Рассчитать факториал</button>
+    <p class="text-result-1"><strong>Результат:</strong> <span id="output"></span></p></div>
+
+    <img src="../svg/code10.svg" class="code_text_1" alt="Иллюстрация исходного решения">
+    <script>
+
+        function calculateFactorial() {
+            var num = parseInt(document.getElementById("num").value);
+
+            if (num < 0) {
+                document.getElementById("output").textContent = "Введите положительное число!";
+                return;
+            }
+
+            var factorial = 1;
+            for (var i = 1; i <= num; i++) {
+                factorial *= i;
+            }
+
+            document.getElementById("output").textContent = factorial;
+        }
+    </script>
+</body>
+</html>

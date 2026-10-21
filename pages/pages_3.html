@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Нахождение числа Фибоначчи</title>
+    
+    <link href="../style.css" rel="stylesheet">
+</head>
+<body>
+    <a class="back-link" href="../index.html">← Все задания</a>
+    <h1 id="textpechat" class="line-1 anim-textpechat">Нахождение числа Фибоначчи</h1>
+
+    <div class="block-pages-1">
+    <input type="number" id="inputNumber" placeholder="Введите номер элемента" min="1">
+    <button onclick="findFibonacci()" class="btn-result">Найти</button>
+    <p class="text-result-1"><strong>Результат:</strong> <span id="output"></span></p>
+    </div>
+
+    <img src="../svg/code3.svg" class="code_text_1" alt="Иллюстрация исходного решения">
+    <script>
+
+        
+        function fibonacci(n) {
+            if (n === 1) return 0;
+            if (n === 2) return 1;
+            return fibonacci(n - 1) + fibonacci(n - 2);
+        }
+
+        function findFibonacci() {
+            let num = parseInt(document.getElementById("inputNumber").value);
+            if (num < 1) {
+                document.getElementById("output").textContent = "Введите число больше 0";
+                return;
+            }
+            let result = fibonacci(num);
+            document.getElementById("output").textContent = result;
+        }
+    </script>
+</body>
+</html>

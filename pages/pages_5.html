@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск ближайшего числа</title>
+    
+    <link href="../style.css" rel="stylesheet">
+</head>
+<body>
+    <a class="back-link" href="../index.html">← Все задания</a>
+    <h1 id="textpechat" class="line-1 anim-textpechat">Поиск ближайшего числа</h1>
+
+    <div class="block-pages-1">
+    <input type="text" id="inputList" placeholder="Введите числа через запятую">
+    <input type="number" id="targetNumber" placeholder="Введите число">
+    <button onclick="findClosestNumber()" class="btn-result">Найти</button>
+    <p class="text-result-1"><strong>Результат:</strong> <span id="output"></span></p></div>
+
+    <img src="../svg/code5.svg" class="code_text_1" alt="Иллюстрация исходного решения">
+    <script>
+
+        function findClosestNumber() {
+            let input = document.getElementById("inputList").value;
+            let target = parseInt(document.getElementById("targetNumber").value);
+            let list = input.split(',').map(item => parseInt(item.trim()));
+            let closest = list.reduce((prev, curr) => {
+                let prevDiff = Math.abs(prev - target);
+                let currDiff = Math.abs(curr - target);
+
+                if (currDiff < prevDiff || (currDiff === prevDiff && curr < prev)) {
+                    return curr;
+                }
+                return prev;
+            });
+
+            document.getElementById("output").textContent = closest;
+        }
+    </script>
+</body>
+</html>
